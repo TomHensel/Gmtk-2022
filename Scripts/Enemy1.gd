@@ -155,8 +155,25 @@ func _on_AttackArea_area_entered(area):
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Bullet"):
-		health -= 1
 		#print(health)
 		if State_ != State.ATTACK:
 			switch_to_Getting_Hit()
+		health -= 1
+	if area.is_in_group("Explo"):
+		#print(health)
+		switch_to_Getting_Hit()
+		health -= health
+	if area.is_in_group("Fist"):
+		if State_ != State.ATTACK:
+			switch_to_Getting_Hit()
+		health -= 3
+	if area.is_in_group("Saw"):
+		if State_ != State.ATTACK:
+			switch_to_Getting_Hit()
+		health -= 5
+	if area.is_in_group("Sword"):
+		$HurtSound.play()
+		if State_ != State.ATTACK:
+			switch_to_Getting_Hit()
+		health -= 10
 		

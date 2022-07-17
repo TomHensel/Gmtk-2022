@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var player_in_range = false
 
-var health = 10
+var health = 4
 
 onready var animatio = $AnimationPlayer
 const bullet = preload("res://Scenes/Projectile/TurretBullet.tscn")
@@ -13,6 +13,9 @@ func _ready():
 func _physics_process(_delta):
 	if health <= 1:
 		animatio.play("Dying")
+		$CollisionShape2D.disabled = true
+		$Hitbox.monitoring = false
+		$Hitbox.monitorable = false
 	if player_in_range:
 		var player_pos = global.playerPosition - global_position
 		var angle = player_pos.angle()
@@ -47,6 +50,22 @@ func _on_Hitbox_area_entered(area):
 		animatio.play("Getting_Hit")
 		$HurtSound.play()
 		health -= 1
+	if area.is_in_group("Explo"):
+		animatio.play("Getting_Hit")
+		$HurtSound.play()
+		health -= health
+	if area.is_in_group("Fist"):
+		animatio.play("Getting_Hit")
+		$HurtSound.play()
+		health -= 3
+	if area.is_in_group("Saw"):
+		animatio.play("Getting_Hit")
+		$HurtSound.play()
+		health -= 5
+	if area.is_in_group("Sword"):
+		animatio.play("Getting_Hit")
+		$HurtSound.play()
+		health -= 10
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
