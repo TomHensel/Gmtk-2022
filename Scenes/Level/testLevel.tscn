@@ -1,9 +1,10 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Assets/World/GrassTile.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemys/Enemy1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Enemys/Turret.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Rätt.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Obstacle/Sawblade.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -485,3 +486,6 @@ position = Vector2( 293, -147 )
 
 [node name="RollerTheRätt" parent="." instance=ExtResource( 4 )]
 position = Vector2( 91, -103 )
+
+[node name="Sawblade" parent="." instance=ExtResource( 5 )]
+position = Vector2( 265, 0 )

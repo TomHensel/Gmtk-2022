@@ -78,3 +78,5 @@ func _on_Area2D_area_entered(area):
 		$"Rätt/Hurt".visible = false
 		health -= 1
 		$"Rätt/Hat/Health".frame = health-1
+	elif area.is_in_group("Sawblade"):
+		health = 0
