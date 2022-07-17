@@ -5,7 +5,7 @@ var Xdirection = 1
 var Ydirection = 1
 
 func _ready():
-	pass
+	$ShotSound.play()
 	
 func _process(_delta):
 	position.x += Xdirection * speed

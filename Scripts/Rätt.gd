@@ -73,6 +73,7 @@ func input_check():
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("EnemyAttack"):
+		$HurtSound.play()
 		$"Rätt/Hurt".visible = true
 		yield(get_tree().create_timer(0.1), "timeout")
 		$"Rätt/Hurt".visible = false
