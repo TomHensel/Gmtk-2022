@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Charakters/Rätt.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rätt.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Charakters/Health.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Charakters/Hurt.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Menu/PauseMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Sounds/Sword.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/PlayerHurt.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 15 )
@@ -511,6 +513,9 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_left = 0
+limit_top = -250
+limit_bottom = 75
 smoothing_enabled = true
 smoothing_speed = 2.5
 
@@ -596,9 +601,16 @@ position = Vector2( 1, 0 )
 shape = SubResource( 9 )
 disabled = true
 
+[node name="MeleeAttackSound" type="AudioStreamPlayer" parent="ActiveWeapon"]
+stream = ExtResource( 10 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -3.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="animation_finished" from="ActiveWeapon/Gunimation" to="ActiveWeapon" method="_on_Gunimation_animation_finished"]

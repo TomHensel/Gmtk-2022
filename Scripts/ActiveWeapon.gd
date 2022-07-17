@@ -47,12 +47,14 @@ func weapons():
 			1:																																				#Fist
 				if shootInput():
 					$MELEEHURTFIST/CollisionShape2D.disabled = false
+					$MeleeAttackSound.play()
 					if(weapon.flip_v):
 						$Gunimation.play("ThrustLeft")
 					else:
 						$Gunimation.play("ThrustRight")
 			2:																																				#Saw
 				if shootInput():
+					$MeleeAttackSound.play()
 					$MELEEHURTSAW/CollisionShape2D.disabled = false
 					if(weapon.flip_v):
 						$Gunimation.play("ThrustLeft")
@@ -60,6 +62,7 @@ func weapons():
 						$Gunimation.play("ThrustRight")
 			3:																																				#Sword
 				if shootInput():
+					$MeleeAttackSound.play()
 					$MELEEHURTSWORD/CollisionShape2D.disabled = false
 					if(weapon.flip_v):
 						$Gunimation.play("ThrustLeft")

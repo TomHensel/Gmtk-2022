@@ -22,12 +22,14 @@ func _on_Area2D_area_entered(area):
 	if(area.is_in_group("Enemy")):
 		mode = 1
 		$AnimationPlayer.play("Explo")
+		$ExplosionSound.play()
 
 func _on_Area2D_body_entered(body):
 	if(!body.is_in_group("Player") && !body.is_in_group("Bomb")):
 		yield(get_tree().create_timer(3), "timeout")
 		mode = 1
 		$AnimationPlayer.play("Explo")
+		$ExplosionSound.play()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
